@@ -1,7 +1,7 @@
 import { redis } from '../../om/client.js';
 
 async function createPurchaseAmount(artist_name, amount_paid_usd) {
-  // increment the artist_name's score inc the sorted set by the amount_paid_usb
+  await redis.zIncrBy('top-sellers', amount_paid_usd, artist_name);
   
   return amount_paid_usd;
 }

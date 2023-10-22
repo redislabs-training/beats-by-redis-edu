@@ -9,9 +9,8 @@ async function purchaseHistory() {
 }
 
 async function topSellers() {
-  // get the range of the 5 last sorted set members with scores (from -5 to -1 index)
-  let range = [];
-  
+  const range = await redis.zRangeWithScores('top-sellers', -5, -1);
+
   // the code below parses Redis return data for chart consumption
   
   let series = [];
