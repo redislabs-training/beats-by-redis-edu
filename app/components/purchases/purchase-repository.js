@@ -2,7 +2,6 @@ import { Repository, Schema } from 'redis-om';
 
 import { redis } from '../../om/client.js';
 
-// TODO: should we add an array of embedded objects that contain all purchases for a specific artist? the embedded object could contain the specifics for the purchase, everything else would be top level to the JSON
 const purchaseSchema = new Schema('purchase', {
   utc_date: { type: 'date', sortable: true },
   utc_date_raw: { type: 'date', sortable: true },

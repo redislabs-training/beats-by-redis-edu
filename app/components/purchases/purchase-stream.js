@@ -10,7 +10,6 @@ import {
 } from './purchase-queries.js';
 
 const PURCHASE_STREAM = 'purchases';
-const SALES_TS = 'sales_ts';
 const TRIM = {
   strategy: 'MAXLEN', // Trim by length.
   strategyModifier: '~', // Approximate trimming.
@@ -30,9 +29,7 @@ async function streamPurchases() {
     }, []);
 
     // adds most recent number of purchases into ts
-    await redis.ts.add(SALES_TS, '*', purchases.length, {
-      DUPLICATE_POLICY: 'FIRST',
-    });
+
 
     // adds purchases to stream
     let lastSale = 0;

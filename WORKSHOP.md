@@ -33,6 +33,7 @@
 ## Live Coding
 
 ### Search for purchases
+This function will search the JSON documents indexed within Redis with the given search criteria.
 
 1. Uncomment in `app/static/assets/js/purchases.js`, line 216-232
 2. Show the code in `app/components/purchases/purchase-repository.js`
@@ -46,6 +47,7 @@ async function search(term) { }
 5. View on frontend
 
 ### Top sellers
+This feature will display the top five highest earning artists within a sorted set
 
 1. Uncomment in `app/static/assets/js/purchases.js`, line 146-161, 201-211
 2. Create `createPurchaseAmount` function in `app/components/purchases/purchase-generator.js`:
@@ -66,7 +68,7 @@ async function topSellers() { }
 7. View on frontend
 
 ### Purchase history
-
+This feature tracks all sales per minute in a timeseries data structure
 1. Uncomment in `app/static/assets/js/purchases.js`, line 127-144, 187-199
 2. In `app/app.js` conditionally create the `sales_ts` in the `setupData` function
 3. In `app/components/purchases/purchase-stream.js` add the purchases to the SALES_TS time series in the `streamPurchases` function
