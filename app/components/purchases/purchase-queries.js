@@ -26,15 +26,20 @@ async function topSellers() {
 }
 
 async function search(term) {
-  // ensure term length is greater than 3 before searching
-    // search for artist_name matches term
-    // search for album_title matches term
-    // search for item_description matches term
-    // search for country equals term
-    // sort by utc_date_raw descending
-    // return the first page of 0, 10
-
-    
+  if (term.length > 3) {
+    return purchaseRepository
+      .search()
+      .where('artist_name')
+      .matches(term)
+      .or('album_title')
+      .matches(term)
+      .or('item_description')
+      .matches(term)
+      .or('country')
+      .equals(term)
+      .sortBy('utc_date_raw', 'DESC')
+      .return.page(0, 10);
+  } 
 }
 
 async function recentPurchases() {
