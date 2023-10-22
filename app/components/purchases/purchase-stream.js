@@ -29,7 +29,9 @@ async function streamPurchases() {
     }, []);
 
     // adds most recent number of purchases into ts
-
+    await redis.ts.add('sales_ts', '*', purchases.length, {
+      DUPLICATE_POLICY: 'FIRST',
+    });
 
     // adds purchases to stream
     let lastSale = 0;

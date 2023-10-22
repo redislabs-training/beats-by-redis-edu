@@ -5,7 +5,7 @@ const ONE_HOUR = 1000 * 60 * 60;
 
 async function purchaseHistory() {
   //  return a range of the 'sales_ts' from an hour ago, to now
-
+  return redis.ts.range('sales_ts', Date.now() - ONE_HOUR, Date.now());
 }
 
 async function topSellers() {
